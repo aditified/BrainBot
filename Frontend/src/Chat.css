@@ -1,0 +1,166 @@
+.chats {
+  width: 100%;
+  max-width: var(--content-width, 640px);
+  box-sizing: border-box;
+  margin: 0 auto;
+  overflow-y: auto;
+  padding: 2rem 0 1rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chats::-webkit-scrollbar {
+  display: none;
+}
+
+.userDiv {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+}
+
+.gptDiv {
+  text-align: left;
+  font-size: 0.9rem;
+  max-width: 100%;
+}
+
+.userMessage {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 91, 213, 0.15),
+    rgba(63, 70, 192, 0.15)
+  );
+  border: 1px solid rgba(79, 91, 213, 0.25);
+  padding: 10px 20px;
+  border-radius: 14px;
+  margin-left: auto;
+  max-width: 80%;
+  width: fit-content;
+  position: relative;
+  color: var(--text-light);
+}
+
+.hljs {
+  border-radius: 14px !important;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+}
+
+pre::-webkit-scrollbar,
+pre code::-webkit-scrollbar {
+  height: 6px;
+}
+
+pre::-webkit-scrollbar-track,
+pre code::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb,
+pre code::-webkit-scrollbar-thumb {
+  background-color: rgba(79, 91, 213, 0.35);
+  border-radius: 10px;
+}
+
+.editIcon {
+  opacity: 0.55;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--text-muted-dark);
+  transition:
+    opacity 0.15s ease,
+    color 0.15s ease;
+}
+
+.editIcon:hover {
+  opacity: 1;
+  color: var(--text-light);
+}
+
+.editBox {
+  background-color: var(--navy-700);
+  padding: 14px 16px;
+  border-radius: 18px;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  max-width: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editInput {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: none;
+  width: 100%;
+  line-height: 1.4;
+}
+
+.editInput:focus {
+  outline: none;
+}
+
+.editActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.editActions button {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin: 0;
+}
+
+.editCancel {
+  background: transparent;
+  color: var(--text-muted-dark);
+}
+
+.editCancel:hover {
+  color: var(--text-light);
+}
+
+.editSave {
+  background: linear-gradient(135deg, var(--indigo-500), var(--indigo-600));
+  color: #fff;
+  font-weight: 500;
+}
+
+.editSave:hover {
+  opacity: 0.9;
+}
+
+.editSave:disabled,
+.editCancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.msgTime {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted-dark);
+  margin-top: 4px;
+}

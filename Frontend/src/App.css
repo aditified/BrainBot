@@ -1,0 +1,29 @@
+:root {
+  --bg-base: #0f0f10;
+  --bg-surface: #1a1a1c;
+  --bg-surface-hover: #242426;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-primary: #ececec;
+  --text-muted: #8e8ea0;
+  --accent: #4f8cff;
+  --accent-hover: #6b9fff;
+
+  --font-display: "Space Grotesk", "Google Sans", sans-serif;
+  --font-body: "Inter", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.app {
+  background: var(--bg-base);
+  display: flex;
+}

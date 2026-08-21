@@ -1,0 +1,250 @@
+.chatWindow {
+  background: var(--navy-900);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.mainArea {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.mainArea.centered {
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.mainArea.centered .chats {
+  flex: 0 0 auto;
+  overflow: visible;
+  padding: 0;
+}
+
+.mainArea.centered .chatInput {
+  padding-bottom: 0;
+}
+
+.mainArea:not(.centered) .chats {
+  flex: 1;
+  min-height: 0;
+}
+
+.mainArea:not(.centered) .chatInput {
+  flex-shrink: 0;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 1.75rem;
+  box-sizing: border-box;
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.expandBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted-dark);
+  cursor: pointer;
+  font-size: 13px;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.expandBtn:hover {
+  background-color: rgba(79, 91, 213, 0.12);
+  color: var(--text-light);
+}
+
+.navbar span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--indigo-500), var(--indigo-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+
+.navbar span i {
+  font-size: 0.7rem;
+  color: var(--text-muted-dark);
+  -webkit-text-fill-color: var(--text-muted-dark);
+}
+
+.userlogo {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(82, 82, 83, 0.35);
+}
+
+/* .userIcon {
+  background: linear-gradient(135deg, var(--indigo-500), var(--indigo-600));
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 16px rgba(79, 91, 213, 0.35);
+} */
+
+/* dropdown */
+.dropDown {
+  position: absolute;
+  top: 2.8rem;
+  right: 0;
+  width: 180px;
+  background-color: var(--navy-700);
+  border: 1px solid rgba(79, 91, 213, 0.25);
+  padding: 0.4rem;
+  border-radius: 12px;
+  text-align: left;
+  z-index: 1000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.dropDownItem {
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+.dropDownItem i {
+  width: 16px;
+  margin-right: 8px;
+  color: var(--text-muted-dark);
+}
+
+.dropDownItem:hover {
+  background-color: rgba(79, 91, 213, 0.12);
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.emptyStateHeading {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  margin: 0;
+  color: var(--text-light);
+}
+
+.chatInput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.inputBox {
+  width: 100%;
+  max-width: var(--content-width, 640px);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(79, 91, 213, 0.25);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-light);
+  padding: 18px 56px 18px 20px;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  border-radius: 20px;
+  box-shadow: rgba(79, 91, 213, 0.1) 0 8px 30px;
+}
+
+input::placeholder {
+  color: var(--text-muted-dark);
+}
+
+input:focus {
+  outline: none;
+  border-color: rgba(63, 70, 192, 0.6);
+}
+
+#submit {
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--indigo-500), var(--indigo-600));
+  border-radius: 50%;
+  color: #fff;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+#submit:hover {
+  opacity: 0.88;
+}
+
+#submit i {
+  color: #fff;
+}
+
+.info {
+  font-size: 0.75rem;
+  padding: 0.5rem 0 0;
+  color: var(--text-muted-dark);
+}

@@ -1,0 +1,565 @@
+.adminShell {
+  display: flex;
+  min-height: 100vh;
+  background: #0f0f10;
+  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+/* ---------- SIDEBAR ---------- */
+.adminSidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #1a1a1c;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.adminBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  margin-bottom: 28px;
+}
+
+.adminBrandDot {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4f5bd5, #3f46c0);
+  box-shadow: 0 4px 16px rgba(79, 91, 213, 0.35);
+}
+
+.adminBrand span {
+  font-family: "Space Grotesk", "Google Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  background: linear-gradient(135deg, #4f5bd5, #3f46c0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.adminNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.adminNavItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #8b8fa8;
+  font-size: 0.87rem;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.adminNavItem i {
+  width: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #8b8fa8;
+}
+
+.adminNavItem:hover {
+  background: rgba(79, 91, 213, 0.12);
+  color: #ececfb;
+}
+
+.adminNavItem:hover i {
+  color: #ececfb;
+}
+
+.adminNavItem.active {
+  background: linear-gradient(135deg, #4f5bd5, #3f46c0);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(79, 91, 213, 0.35);
+}
+
+.adminNavItem.active i {
+  color: #fff;
+}
+
+.adminNavItem:active {
+  transform: scale(0.98);
+}
+
+.adminLogout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #8b8fa8;
+  font-size: 0.87rem;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+}
+
+.adminLogout i {
+  width: 16px;
+  text-align: center;
+}
+
+.adminLogout:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+}
+
+/* ---------- MAIN AREA ---------- */
+.adminMain {
+  flex: 1;
+  padding: 26px 36px 40px;
+  overflow-y: auto;
+}
+
+.adminTopbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.adminBreadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #8b8fa8;
+}
+
+.adminBreadcrumb i {
+  font-size: 0.6rem;
+}
+
+.adminBreadcrumb .current {
+  color: #ececfb;
+  font-weight: 500;
+}
+
+.adminTopbarRight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.adminBackBtn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(79, 91, 213, 0.25);
+  color: #ececfb;
+  padding: 9px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.adminBackBtn:hover {
+  background: rgba(79, 91, 213, 0.12);
+}
+
+.adminAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f5bd5, #3f46c0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 16px rgba(79, 91, 213, 0.35);
+}
+
+.adminLoading {
+  color: #8b8fa8;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+}
+
+/* ---------- CARDS ---------- */
+.adminCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.adminCard {
+  background: #1a1a1c;
+  border: 1px solid rgba(79, 91, 213, 0.12);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: border-color 0.15s ease;
+}
+
+.adminCard:hover {
+  border-color: rgba(79, 91, 213, 0.3);
+}
+
+.adminCardIcon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 91, 213, 0.2),
+    rgba(63, 70, 192, 0.2)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c7aff;
+  font-size: 1rem;
+}
+
+.adminCardValue {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ececfb;
+  font-family: "Space Grotesk", "Google Sans", sans-serif;
+  line-height: 1.2;
+}
+
+.adminCardLabel {
+  font-size: 0.78rem;
+  color: #8b8fa8;
+}
+
+/* ---------- PANEL / TABLE ---------- */
+.adminPanelBox {
+  background: #1a1a1c;
+  border: 1px solid rgba(79, 91, 213, 0.12);
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+
+.adminPanelBox h3 {
+  font-family: "Space Grotesk", "Google Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ececfb;
+  margin: 0 0 16px;
+}
+
+.adminTableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.adminTableHeader h3 {
+  margin: 0;
+}
+
+.adminSearchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(79, 91, 213, 0.2);
+  border-radius: 10px;
+  padding: 8px 14px;
+  width: 240px;
+  transition: border-color 0.15s ease;
+}
+
+.adminSearchBox:focus-within {
+  border-color: rgba(63, 70, 192, 0.6);
+}
+
+.adminSearchBox i {
+  color: #8b8fa8;
+  font-size: 0.8rem;
+}
+
+.adminSearchBox input {
+  background: transparent;
+  border: none;
+  color: #ececfb;
+  font-size: 0.85rem;
+  width: 100%;
+  padding: 0;
+  box-shadow: none;
+}
+
+.adminSearchBox input:focus {
+  outline: none;
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.adminTable th {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8b8fa8;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.adminTable td {
+  padding: 12px 14px;
+  font-size: 0.85rem;
+  color: #ececfb;
+  border-radius: 10px;
+}
+
+.adminTable tr {
+  transition: background-color 0.15s ease;
+}
+
+.adminTable tr.alt td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.adminTable tbody tr:hover td {
+  background: rgba(79, 91, 213, 0.07);
+}
+
+.adminBadge {
+  font-size: 0.65rem;
+  background: linear-gradient(135deg, #4f5bd5, #3f46c0);
+  padding: 2px 8px;
+  border-radius: 8px;
+  color: #fff;
+  margin-left: 6px;
+}
+
+.statusPill {
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.statusPill.active {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+}
+
+.statusPill.blocked {
+  background: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+}
+
+.adminActions {
+  display: flex;
+  gap: 8px;
+}
+
+.adminActions button {
+  background: transparent;
+  border: none;
+  color: #8b8fa8;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.adminActions button:hover {
+  background: rgba(79, 91, 213, 0.12);
+  color: #ececfb;
+}
+
+.adminDangerBtn {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.adminDangerBtn:hover {
+  background: rgba(239, 68, 68, 0.18);
+}
+
+.adminSubtleText {
+  color: #8b8fa8;
+  font-size: 0.82rem;
+  margin: -8px 0 16px;
+}
+
+/* ---------- CHAT VIEW ---------- */
+.adminChatView {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.adminChatBubble {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+.adminChatBubble.user {
+  align-self: flex-end;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 91, 213, 0.15),
+    rgba(63, 70, 192, 0.15)
+  );
+  border: 1px solid rgba(79, 91, 213, 0.25);
+  color: #ececfb;
+}
+
+.adminChatBubble.assistant {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ececfb;
+}
+
+/* ---------- BAR CHART ---------- */
+.adminBarChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 160px;
+  padding-top: 10px;
+}
+
+.adminBarCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.adminBar {
+  width: 100%;
+  max-width: 32px;
+  background: linear-gradient(180deg, #4f5bd5, #3f46c0);
+  border-radius: 8px 8px 0 0;
+  min-height: 4px;
+  transition: opacity 0.15s ease;
+}
+
+.adminBarCol:hover .adminBar {
+  opacity: 0.85;
+}
+
+.adminBarCol span {
+  font-size: 0.7rem;
+  color: #8b8fa8;
+}
+
+/* ---------- FORMS (Profile) ---------- */
+.adminForm {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 480px;
+}
+
+.adminForm label {
+  font-size: 0.8rem;
+  color: #8b8fa8;
+  margin-top: 10px;
+}
+
+.adminForm input,
+.adminForm select {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(79, 91, 213, 0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #ececfb;
+  font-size: 0.88rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.adminForm input:focus,
+.adminForm select:focus {
+  outline: none;
+  border-color: rgba(63, 70, 192, 0.6);
+}
+
+.adminForm input:disabled {
+  opacity: 0.5;
+}
+
+.adminToggleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+.adminSaveBtn {
+  background: linear-gradient(135deg, #4f5bd5, #3f46c0);
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: opacity 0.15s ease;
+}
+
+.adminSaveBtn:hover {
+  opacity: 0.88;
+}
+
+.adminMessage {
+  background: rgba(74, 222, 128, 0.1);
+  border-left: 3px solid #4ade80;
+  color: #4ade80;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  margin-bottom: 12px;
+}

@@ -1,0 +1,231 @@
+.authWrapper {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  /* background: linear-gradient(
+    135deg,
+    #021b1d 0%,
+    #09373c 35%,
+    #123c42 65%,
+    #0fa6bb 100%
+  ); */
+  background-color: #0f2a2a;
+  overflow: hidden;
+}
+
+/* soft decorative glow top-left */
+.authWrapper::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(109, 230, 241, 0.1);
+  z-index: 0;
+}
+
+/* Spline fills the entire screen as the background layer */
+.authVisual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.authVisual .splineStage {
+  width: 100%;
+  height: 100%;
+}
+
+.authVisual .splineStage > div {
+  height: 100%;
+  width: 100%;
+}
+
+.splineFallback {
+  height: 100%;
+  width: 100%;
+}
+
+.authVisual canvas {
+  background: transparent !important;
+}
+
+.authVisualCaption {
+  display: none;
+}
+
+/* Form floats on top, right side, above the Spline layer */
+.authPanel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 100vh;
+  padding: 3rem 5rem;
+  box-sizing: border-box;
+}
+
+.authFormSide {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  background: rgba(9, 55, 60, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(109, 230, 241, 0.15);
+  border-radius: 24px;
+  padding: 2.75rem 2.5rem;
+  box-shadow: 0 25px 70px rgba(2, 27, 29, 0.5);
+}
+
+.authTabs {
+  display: none;
+}
+
+.authBox h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #f7f9fa;
+  margin: 0;
+  text-align: center;
+}
+
+.authSubtitle {
+  color: #a6c4c8;
+  font-size: 0.85rem;
+  margin: -8px 0 4px;
+  text-align: center;
+}
+
+.authBox {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.authInputGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(109, 230, 241, 0.18);
+  border-radius: 10px;
+  padding: 12px 16px;
+  background: rgba(26, 74, 80, 0.4);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+  width: 100%;
+}
+
+.authInputGroup:focus-within {
+  background: rgba(44, 93, 99, 0.55);
+  border-color: #0fa6bb;
+}
+
+.authInputGroup i {
+  color: #a6c4c8;
+  font-size: 0.85rem;
+  width: 16px;
+  text-align: center;
+}
+
+.authInputGroup input {
+  background: transparent;
+  border: none;
+  padding: 4px 0;
+  color: #f7f9fa;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.authInputGroup input::placeholder {
+  color: #a6c4c8;
+  opacity: 0.6;
+}
+
+.authInputGroup input:focus {
+  outline: none;
+}
+
+.authForgot {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #a6c4c8;
+  margin: -6px 0 0;
+  width: 100%;
+}
+
+.authForgot a {
+  color: #6de6f1;
+  text-decoration: underline;
+}
+
+.authBox button {
+  background: linear-gradient(135deg, #0fa6bb, #22c7d8);
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  color: #021b1d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 75%;
+  align-self: center;
+  transition: opacity 0.15s ease;
+}
+
+.authBox button:hover {
+  opacity: 0.88;
+}
+
+.authBox button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.authSwitch {
+  text-align: center;
+  font-size: 0.83rem;
+  color: #a6c4c8;
+  margin-top: 6px;
+}
+
+.authSwitch a {
+  color: #6de6f1;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.authError {
+  background: rgba(239, 68, 68, 0.12);
+  border-left: 3px solid #f87171;
+  color: #fca5a5;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .authPanel {
+    justify-content: center;
+    padding: 2rem;
+  }
+  .authFormSide {
+    max-width: none;
+  }
+}
