@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext.jsx";
 import "./AdminPage.css";
+import botLogo from "./assets/bot.png";
 
 const NAV_ITEMS = [
   { key: "dashboard", label: "Dashboard", icon: "fa-gauge-high" },
@@ -26,7 +27,7 @@ function AdminPage() {
     <div className="adminShell">
       <aside className="adminSidebar">
         <div className="brandRow">
-          <img src="src/assets/bot.png" alt="gpt logo" className="logo2"></img>
+          <img src={botLogo} alt="gpt logo" className="logo"></img>
           <span className="brandName2">BrainBot</span>
         </div>
 
