@@ -21,9 +21,12 @@ function Sidebar() {
 
   const getAllThreads = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/thread", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        "https://brainbot-91mj.onrender.com/api/thread",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const res = await response.json();
       const filteredData = res.map((thread) => ({
         threadId: thread.threadId,
@@ -52,7 +55,7 @@ function Sidebar() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/thread/${newThreadId}`,
+        `https://brainbot-91mj.onrender.com/api/thread/${newThreadId}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
       const res = await response.json();
@@ -67,7 +70,7 @@ function Sidebar() {
   const deleteThread = async (threadId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/thread/${threadId}`,
+        `https://brainbot-91mj.onrender.com/api/thread/${threadId}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },

@@ -91,7 +91,7 @@ function DashboardTab({ token }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/admin/dashboard", {
+    fetch("https://brainbot-91mj.onrender.com/api/admin/dashboard", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())
@@ -165,9 +165,12 @@ function UsersTab({ token }) {
   const [selected, setSelected] = useState(null);
 
   const fetchUsers = () => {
-    fetch(`http://localhost:3000/api/admin/users?search=${search}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    fetch(
+      `https://brainbot-91mj.onrender.com/api/admin/users?search=${search}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    )
       .then((r) => r.json())
       .then(setUsers)
       .catch(console.log);
@@ -178,16 +181,19 @@ function UsersTab({ token }) {
   }, [search]);
 
   const toggleBlock = async (id) => {
-    await fetch(`http://localhost:3000/api/admin/users/${id}/block`, {
-      method: "PATCH",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await fetch(
+      `https://brainbot-91mj.onrender.com/api/admin/users/${id}/block`,
+      {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
     fetchUsers();
   };
 
   const deleteUser = async (id) => {
     if (!window.confirm("Delete this user and all their threads?")) return;
-    await fetch(`http://localhost:3000/api/admin/users/${id}`, {
+    await fetch(`https://brainbot-91mj.onrender.com/api/admin/users/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -262,9 +268,12 @@ function ThreadsTab({ token }) {
   const [viewing, setViewing] = useState(null);
 
   const fetchThreads = () => {
-    fetch(`http://localhost:3000/api/admin/threads?search=${search}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    fetch(
+      `https://brainbot-91mj.onrender.com/api/admin/threads?search=${search}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    )
       .then((r) => r.json())
       .then(setThreads)
       .catch(console.log);
@@ -276,7 +285,7 @@ function ThreadsTab({ token }) {
 
   const viewThread = async (threadId) => {
     const res = await fetch(
-      `http://localhost:3000/api/admin/threads/${threadId}`,
+      `https://brainbot-91mj.onrender.com/api/admin/threads/${threadId}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       },
@@ -286,10 +295,13 @@ function ThreadsTab({ token }) {
 
   const deleteThread = async (threadId) => {
     if (!window.confirm("Delete this conversation?")) return;
-    await fetch(`http://localhost:3000/api/admin/threads/${threadId}`, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await fetch(
+      `https://brainbot-91mj.onrender.com/api/admin/threads/${threadId}`,
+      {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
     setViewing(null);
     fetchThreads();
   };
@@ -372,7 +384,7 @@ function AnalyticsTab({ token }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/admin/analytics", {
+    fetch("https://brainbot-91mj.onrender.com/api/admin/analytics", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())
@@ -434,14 +446,17 @@ function ProfileTab({ token }) {
 
   const save = async () => {
     setMessage("");
-    const res = await fetch("http://localhost:3000/api/admin/profile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+    const res = await fetch(
+      "https://brainbot-91mj.onrender.com/api/admin/profile",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ name, currentPassword, newPassword }),
       },
-      body: JSON.stringify({ name, currentPassword, newPassword }),
-    });
+    );
     const data = await res.json();
     if (!res.ok) {
       setMessage(data.error || "Failed to update");

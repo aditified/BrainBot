@@ -56,7 +56,10 @@ function ChatWindow() {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/api/chat", options);
+      const response = await fetch(
+        "https://brainbot-91mj.onrender.com/api/chat",
+        options,
+      );
       if (!response.ok || !response.body) {
         const errorData = await response.json().catch(() => ({}));
         const error = new Error(

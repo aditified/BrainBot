@@ -67,7 +67,7 @@ function Chat() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/thread/${currThreadId}/message/${chat._id}`,
+        `https://brainbot-91mj.onrender.com/api/thread/${currThreadId}/message/${chat._id}`,
         {
           method: "PUT",
           headers: {
