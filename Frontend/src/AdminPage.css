@@ -32,6 +32,13 @@
   background: linear-gradient(135deg, #4f5bd5, #3f46c0);
   box-shadow: 0 4px 16px rgba(79, 91, 213, 0.35);
 }
+.adminBrand img {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}
 
 .adminBrand span {
   font-family: "Space Grotesk", "Google Sans", sans-serif;
