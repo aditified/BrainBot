@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "./MyContext.jsx";
 import { AuthContext } from "./AuthContext.jsx";
 import { v1 as uuidv1 } from "uuid";
+import botLogo from "./assets/bot.png";
 
 function Sidebar() {
   const {
@@ -95,7 +96,7 @@ function Sidebar() {
       <div className="sidebarInner">
         <div className="sidebarTop">
           <div className="brandRow">
-            <img src="src/assets/bot.png" alt="gpt logo" className="logo"></img>
+            <img src={botLogo} alt="gpt logo" className="logo"></img>
             <span className="brandName">BrainBot</span>
             <button
               className="collapseBtn"

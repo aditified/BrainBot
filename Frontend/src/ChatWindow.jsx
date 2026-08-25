@@ -5,6 +5,7 @@ import { AuthContext } from "./AuthContext.jsx";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
+import userLogo from "./assets/user.jpeg";
 
 const BLOCKED_ACCOUNT_MESSAGE =
   "You have been blocked by the admin. Once you are unblocked, you can log back in.";
@@ -173,7 +174,7 @@ function ChatWindow() {
         <div className="userIconDiv" onClick={handleProfileClick}>
           <span className="userIcon">
             <i className="fa-solid fa-user">
-              <img className="userlogo" src="src/assets/user.jpeg" alt="user" />
+              <img className="userlogo" src={userLogo} alt="user" />
             </i>
           </span>
         </div>
