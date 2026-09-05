@@ -29,7 +29,7 @@ A full-stack MERN AI chatbot with multi-threaded conversations, streaming respon
 
 ## Live Demo
 
-🔗 *https://brainbot-1-py6y.onrender.com/login*
+🔗 *https://brainbot-1-py6y.onrender.com*
 
 > Note: The backend runs on Render's free tier, which spins down after 15 minutes of inactivity. The first request after idle time may take 30–50 seconds to respond while the server wakes up.
 
