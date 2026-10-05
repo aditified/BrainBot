@@ -4,6 +4,7 @@ import { MyContext } from "./MyContext.jsx";
 import { AuthContext } from "./AuthContext.jsx";
 import { v1 as uuidv1 } from "uuid";
 import botLogo from "./assets/bot.png";
+import { API_BASE_URL } from "./config.js";
 
 function Sidebar() {
   const {
@@ -23,7 +24,7 @@ function Sidebar() {
   const getAllThreads = async () => {
     try {
       const response = await fetch(
-        "https://brainbot-91mj.onrender.com/api/thread",
+        `${API_BASE_URL}/api/thread`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -56,7 +57,7 @@ function Sidebar() {
 
     try {
       const response = await fetch(
-        `https://brainbot-91mj.onrender.com/api/thread/${newThreadId}`,
+        `${API_BASE_URL}/api/thread/${newThreadId}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
       const res = await response.json();
@@ -71,7 +72,7 @@ function Sidebar() {
   const deleteThread = async (threadId) => {
     try {
       const response = await fetch(
-        `https://brainbot-91mj.onrender.com/api/thread/${threadId}`,
+        `${API_BASE_URL}/api/thread/${threadId}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },

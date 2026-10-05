@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "./AuthContext.jsx";
 import SplineBot from "./SplineBot.jsx";
 import "./Auth.css";
+import { API_BASE_URL } from "./config.js";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -20,7 +21,7 @@ function Signup() {
 
     try {
       const response = await fetch(
-        "https://brainbot-91mj.onrender.com/api/auth/signup",
+        `${API_BASE_URL}/api/auth/signup`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

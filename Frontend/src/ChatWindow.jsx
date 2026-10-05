@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import userLogo from "./assets/user.jpeg";
+import { API_BASE_URL } from "./config.js";
 
 const BLOCKED_ACCOUNT_MESSAGE =
   "You have been blocked by the admin. Once you are unblocked, you can log back in.";
@@ -58,7 +59,7 @@ function ChatWindow() {
 
     try {
       const response = await fetch(
-        "https://brainbot-91mj.onrender.com/api/chat",
+        `${API_BASE_URL}/api/chat`,
         options,
       );
       if (!response.ok || !response.body) {
@@ -139,7 +140,8 @@ function ChatWindow() {
         const lastMessage = updated[updated.length - 1];
         updated[updated.length - 1] = {
           ...lastMessage,
-          content: "Sorry, I couldn't generate a response right now.",
+          content:
+            err.message || "Sorry, I couldn't generate a response right now.",
         };
         return updated;
       });

@@ -35,6 +35,21 @@ router.get("/thread/:threadId", protect, async (req, res) => {
   }
 });
 
+const formatHistoryForGemini = (messages, maxTurns = 30) => {
+  const geminiContents = messages
+    .filter((m) => m.content && m.content.trim())
+    .map((m) => ({
+      role: m.role === "assistant" ? "model" : "user",
+      parts: [{ text: m.content }],
+    }));
+
+  let history = geminiContents.slice(-maxTurns);
+  while (history.length > 0 && history[0].role !== "user") {
+    history.shift();
+  }
+  return history;
+};
+
 router.put(
   "/thread/:threadId/message/:messageId",
   protect,
@@ -64,7 +79,8 @@ router.put(
       thread.messages = thread.messages.slice(0, msgIndex);
       thread.messages.push({ role: "user", content });
 
-      const assistantReply = await getOpenAIAPIResponse(content);
+      const history = formatHistoryForGemini(thread.messages);
+      const assistantReply = await getOpenAIAPIResponse(history);
       thread.messages.push({ role: "assistant", content: assistantReply });
 
       thread.updatedAt = new Date();
@@ -121,18 +137,22 @@ router.post("/chat", protect, async (req, res) => {
     let thread = await Thread.findOne({ threadId, userId: req.userId });
 
     if (!thread) {
+      const generatedTitle =
+        message.length > 45 ? `${message.slice(0, 42).trim()}...` : message;
       thread = new Thread({
         threadId,
         userId: req.userId,
-        title: message,
+        title: generatedTitle,
         messages: [{ role: "user", content: message }],
       });
     } else {
       thread.messages.push({ role: "user", content: message });
     }
 
+    const conversationHistory = formatHistoryForGemini(thread.messages);
+
     let assistantReply = "";
-    for await (const textChunk of streamGeminiResponse(message)) {
+    for await (const textChunk of streamGeminiResponse(conversationHistory)) {
       assistantReply += textChunk;
       sendStreamEvent(res, "delta", { text: textChunk });
     }
@@ -151,8 +171,21 @@ router.post("/chat", protect, async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    const errStr = (err?.message || "") + " " + (err?.raw || "");
+    let errorMessage = "Unable to generate a response. Please try again.";
+
+    if (
+      err.status === 429 ||
+      errStr.includes("429") ||
+      errStr.includes("RESOURCE_EXHAUSTED") ||
+      errStr.toLowerCase().includes("quota")
+    ) {
+      errorMessage =
+        "You have hit your daily limit. Please try again 24 hours later.";
+    }
+
     sendStreamEvent(res, "error", {
-      error: "Unable to generate a response. Please try again.",
+      error: errorMessage,
     });
   } finally {
     res.end();

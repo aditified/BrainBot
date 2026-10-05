@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext.jsx";
 import "./AdminPage.css";
 import botLogo from "./assets/bot.png";
+import { API_BASE_URL } from "./config.js";
 
 const NAV_ITEMS = [
   { key: "dashboard", label: "Dashboard", icon: "fa-gauge-high" },
@@ -92,7 +93,7 @@ function DashboardTab({ token }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("https://brainbot-91mj.onrender.com/api/admin/dashboard", {
+    fetch(`${API_BASE_URL}/api/admin/dashboard`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())
@@ -167,7 +168,7 @@ function UsersTab({ token }) {
 
   const fetchUsers = () => {
     fetch(
-      `https://brainbot-91mj.onrender.com/api/admin/users?search=${search}`,
+      `${API_BASE_URL}/api/admin/users?search=${search}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       },
@@ -183,7 +184,7 @@ function UsersTab({ token }) {
 
   const toggleBlock = async (id) => {
     await fetch(
-      `https://brainbot-91mj.onrender.com/api/admin/users/${id}/block`,
+      `${API_BASE_URL}/api/admin/users/${id}/block`,
       {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
@@ -194,7 +195,7 @@ function UsersTab({ token }) {
 
   const deleteUser = async (id) => {
     if (!window.confirm("Delete this user and all their threads?")) return;
-    await fetch(`https://brainbot-91mj.onrender.com/api/admin/users/${id}`, {
+    await fetch(`${API_BASE_URL}/api/admin/users/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -270,7 +271,7 @@ function ThreadsTab({ token }) {
 
   const fetchThreads = () => {
     fetch(
-      `https://brainbot-91mj.onrender.com/api/admin/threads?search=${search}`,
+      `${API_BASE_URL}/api/admin/threads?search=${search}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       },
@@ -286,7 +287,7 @@ function ThreadsTab({ token }) {
 
   const viewThread = async (threadId) => {
     const res = await fetch(
-      `https://brainbot-91mj.onrender.com/api/admin/threads/${threadId}`,
+      `${API_BASE_URL}/api/admin/threads/${threadId}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       },
@@ -297,7 +298,7 @@ function ThreadsTab({ token }) {
   const deleteThread = async (threadId) => {
     if (!window.confirm("Delete this conversation?")) return;
     await fetch(
-      `https://brainbot-91mj.onrender.com/api/admin/threads/${threadId}`,
+      `${API_BASE_URL}/api/admin/threads/${threadId}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
@@ -385,7 +386,7 @@ function AnalyticsTab({ token }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("https://brainbot-91mj.onrender.com/api/admin/analytics", {
+    fetch(`${API_BASE_URL}/api/admin/analytics`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())
@@ -448,7 +449,7 @@ function ProfileTab({ token }) {
   const save = async () => {
     setMessage("");
     const res = await fetch(
-      "https://brainbot-91mj.onrender.com/api/admin/profile",
+      `${API_BASE_URL}/api/admin/profile`,
       {
         method: "PUT",
         headers: {

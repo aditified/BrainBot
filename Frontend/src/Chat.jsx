@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 import { AuthContext } from "./AuthContext.jsx";
+import { API_BASE_URL } from "./config.js";
 
 const CALL_TO_ACTION = [
   "Let's get started.",
@@ -67,7 +68,7 @@ function Chat() {
 
     try {
       const response = await fetch(
-        `https://brainbot-91mj.onrender.com/api/thread/${currThreadId}/message/${chat._id}`,
+        `${API_BASE_URL}/api/thread/${currThreadId}/message/${chat._id}`,
         {
           method: "PUT",
           headers: {

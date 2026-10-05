@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "./AuthContext.jsx";
 import SplineBot from "./SplineBot.jsx";
 import "./Auth.css";
+import { API_BASE_URL } from "./config.js";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "https://brainbot-91mj.onrender.com/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
